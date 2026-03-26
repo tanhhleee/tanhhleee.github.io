@@ -10,12 +10,9 @@
             background: linear-gradient(120deg, #FFE4E1, #D8BFD8, #ADD8E6);
             background-size: 300% 300%;
             animation: gradientBG 15s ease infinite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
-            text-align: center;
+            height: 100vh;
+            display: flex;
             overflow: hidden;
         }
 
@@ -25,13 +22,40 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* CHIA 2 BÊN */
+        .left, .right {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ẢNH */
+        .left img {
+            width: 80%;
+            max-width: 400px; /* Thêm max-width để ảnh không bị quá to trên màn hình bự */
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            animation: fadeIn 1.5s ease;
+            transition: transform 0.5s;
+        }
+
+        .left img:hover {
+            transform: scale(1.05);
+        }
+
+        /* TEXT */
         .container {
             background-color: rgba(255, 255, 255, 0.9);
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(8px);
+            text-align: center;
             animation: fadeIn 1s ease-out;
+            width: 80%;
+            max-width: 450px; /* Giúp hộp chữ gọn gàng hơn */
+            box-sizing: border-box; /* SỬA LỖI Ở ĐÂY: Giữ cho padding không làm tràn box */
         }
 
         @keyframes fadeIn {
@@ -53,20 +77,16 @@
         p {
             color: #333;
             line-height: 1.6;
-            animation: slideIn 1s ease-out;
         }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
+        /* TIM BAY */
         .heart {
             position: absolute;
             color: #ff69b4;
             font-size: 20px;
             animation: float 3s ease-in-out infinite;
             opacity: 0.7;
+            z-index: -1; /* Đẩy tim ra phía sau để không che mất chữ */
         }
 
         @keyframes float {
@@ -74,14 +94,48 @@
             50% { transform: translateY(-20px) rotate(180deg); }
             100% { transform: translateY(0) rotate(360deg); }
         }
+
+        /* 📱 RESPONSIVE */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+                overflow-y: auto; /* Cho phép cuộn trên điện thoại nếu màn hình quá nhỏ */
+            }
+
+            .left, .right {
+                width: 100%;
+                height: auto;
+                padding: 20px 0;
+            }
+
+            .left img {
+                width: 85%;
+            }
+
+            .container {
+                width: 85%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Happy Birthday my best friend 🥰🥰🥰</h1>
-        <p>Hôm nay là ngày sinh nhật của m, t muốn gửi đến m những lời chúc tốt đẹp nhất. Chúc m luôn mạnh khỏe, hạnh phúc và thành công trên con đường mà mình lựa chọn.</p> 
-        <p>Cảm ơn m vì đã là người bạn tốt nhất của t</p>
-        <p>have a happy sixteen!🍀</p>
+
+    <div class="left">
+        <img src="Locket_1774361475625_93.jpg">
+    </div>
+
+    <div class="right">
+        <div class="container">
+            <h1>Happy Birthday my best friend 🥰🥰🥰</h1>
+            <p>Hôm nay là ngày sinh nhật của m, t muốn gửi đến m những lời chúc tốt đẹp nhất. Chúc m luôn mạnh khỏe, hạnh phúc và thành công trên con đường mà mình lựa chọn.</p> 
+            <p>Cảm ơn m vì đã là người bạn tốt nhất của t</p>
+            <p>have a happy sixteen!🍀</p>
+        </div>
     </div>
 
     <script>
@@ -100,5 +154,6 @@
 
         setInterval(createHeart, 300);
     </script>
+
 </body>
 </html>
